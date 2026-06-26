@@ -30,16 +30,18 @@
         .gold-text{color:#D4AF37}
         .nosotros-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
         .nosotros-grid img{width:100%;border:4px solid #D4AF37;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+        .catalogo-item{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);margin:30px 0;padding:35px;cursor:pointer;border:3px solid #D4AF37;transition:0.3s;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.4)}
+        .catalogo-item:hover{background:#1a1a1a;border-color:#fff;transform:translateX(10px)}
+        .catalogo-content{display:none;padding:35px 0}
+        .catalogo-content.active{display:block}
         .productos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px}
         .producto-card{background:#0A2E1A;padding:25px;border:2px solid #D4AF37;border-radius:10px;text-align:center;transition:0.3s}
         .producto-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,0.4)}
         .producto-card img{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:15px;background:#000}
         .producto-card h4{font-size:1.2rem;margin:10px 0}
         .producto-card .precio{color:#D4AF37;font-size:1.8rem;font-weight:bold;margin:15px 0}
-        .linea-titulo{background:#000;padding:20px;margin:40px 0 20px;border-left:5px solid #D4AF37}
-        .linea-titulo h3{margin:0;font-size:1.8rem}
         .variedades{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;margin-top:50px}
-        .variedad{background:linear-gradient(135deg,#000 0%,#0d0d0d 100%);padding:30px;border:2px solid #D4AF37;cursor:pointer;transition:0.4s;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.5)}
+        .variedad{background:linear-gradient(135deg,#000 0%,#0d0d 100%);padding:30px;border:2px solid #D4AF37;cursor:pointer;transition:0.4s;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.5)}
         .variedad:hover{border-color:#fff;transform:translateY(-8px);box-shadow:0 15px 50px rgba(212,175,55,0.4)}
         .variedad h4{font-size:1.5rem;margin-bottom:12px}
         .variedad .origen{font-size:14px;color:#aaa;margin-bottom:15px;font-style:italic}
@@ -54,7 +56,7 @@
         .mayoristas-hero{position:relative;height:70vh;overflow:hidden;margin:50px 0;border:4px solid #D4AF37;border-radius:10px}
         .mayoristas-hero video{width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
         .slogan{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;background:rgba(0,0,0,0.9);padding:50px;border:3px solid #D4AF37;border-radius:10px}
-        .slogan h3{font-size:3rem;margin:0;text-shadow:3px 3px 10px #000}
+        .slogan h3{font-size:3rem;margin:0;text-shadow:3px 10px #000}
         .formulario{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);padding:50px;margin-top:30px;border:3px solid #D4AF37;border-radius:10px}
         .formulario input,.formulario textarea,.formulario select{width:100%;padding:18px;margin:15px 0;background:#0A2E1A;border:2px solid #D4AF37;color:#fff;font-size:16px;border-radius:5px}
         .contacto-item{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);margin:25px 0;padding:30px;cursor:pointer;border:2px solid #D4AF37;border-radius:10px}
@@ -117,53 +119,61 @@
     <section id="catalogo">
         <h2>NUESTRO CATÁLOGO</h2>
         
-        <div class="linea-titulo"><h3>Línea de Palmito</h3></div>
-        <div class="productos-grid">
-            <div class="producto-card">
-                <img src="palmito-productos.png" alt="Palmito en Conserva Clásico">
-                <h4>Palmito en Conserva Clásico</h4>
-                <p style="font-size:14px;margin:10px 0">Corazones de palmito tiernos en salmuera natural. Textura firme y sabor suave.</p>
-                <div class="precio">$12</div>
-                <button class="btn btn-small" onclick="addToCart('Palmito en Conserva Clásico', '$12', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="palmito-productos.png" alt="Palmito Premium Entero">
-                <h4>Palmito Premium Entero</h4>
-                <p style="font-size:14px;margin:10px 0">Selección de los mejores tallos enteros. Sin fibra. Empaque al vacío. Premium HORECA.</p>
-                <div class="precio">$15</div>
-                <button class="btn btn-small" onclick="addToCart('Palmito Premium Entero', '$15', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="palmito-productos.png" alt="Palmito en Rodajas">
-                <h4>Palmito en Rodajas</h4>
-                <p style="font-size:14px;margin:10px 0">Corte uniforme 8mm. Listo para servir. Perfecto para pizzas, pastas y canapés.</p>
-                <div class="precio">$10</div>
-                <button class="btn btn-small" onclick="addToCart('Palmito en Rodajas', '$10', event)">AÑADIR AL CARRITO</button>
+        <div class="catalogo-item" onclick="toggleCatalogo('palmito')">
+            <h3>▶ LÍNEA PALMITO PREMIUM</h3>
+            <div class="catalogo-content" id="palmito">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="palmito-productos.png" alt="Palmito en Conserva Clásico">
+                        <h4>Palmito en Conserva Clásico</h4>
+                        <p style="font-size:14px;margin:10px 0">Corazones de palmito tiernos en salmuera natural. Textura firme y sabor suave. Ideal para ensaladas gourmet.</p>
+                        <div class="precio">$12</div>
+                        <button class="btn btn-small" onclick="addToCart('Palmito en Conserva Clásico', '$12', event)">AÑADIR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <img src="palmito-productos.png" alt="Palmito Premium Entero">
+                        <h4>Palmito Premium Entero</h4>
+                        <p style="font-size:14px;margin:10px 0">Selección de los mejores tallos enteros. Sin fibra. Empaque al vacío. Certificación Kosher.</p>
+                        <div class="precio">$15</div>
+                        <button class="btn btn-small" onclick="addToCart('Palmito Premium Entero', '$15', event)">AÑADIR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <img src="palmito-productos.png" alt="Palmito en Rodajas">
+                        <h4>Palmito en Rodajas</h4>
+                        <p style="font-size:14px;margin:10px 0">Corte uniforme 8mm. Listo para servir. Perfecto para pizzas, pastas y canapés.</p>
+                        <div class="precio">$10</div>
+                        <button class="btn btn-small" onclick="addToCart('Palmito en Rodajas', '$10', event)">AÑADIR AL CARRITO</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="linea-titulo"><h3>Línea de Piña Dorada</h3></div>
-        <div class="productos-grid">
-            <div class="producto-card">
-                <img src="pina-productos.png" alt="Zumo de Piña 100% Natural">
-                <h4>Zumo de Piña 100% Natural</h4>
-                <p style="font-size:14px;margin:10px 0">NFC sin azúcares añadidos. Pasteurizado en frío. Brix 14-16°. Botella PET 1L.</p>
-                <div class="precio">$8</div>
-                <button class="btn btn-small" onclick="addToCart('Zumo de Piña 100% Natural', '$8', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="pina-productos.png" alt="Rodajas de Piña en Almíbar">
-                <h4>Rodajas de Piña en Almíbar</h4>
-                <p style="font-size:14px;margin:10px 0">Rodajas enteras en almíbar ligero. Lata 565g. Color dorado uniforme.</p>
-                <div class="precio">$9</div>
-                <button class="btn btn-small" onclick="addToCart('Rodajas de Piña en Almíbar', '$9', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="pina-productos.png" alt="Crunchyroll de Piña Deshidratada">
-                <h4>Crunchyroll de Piña Deshidratada</h4>
-                <p style="font-size:14px;margin:10px 0">Snack crujiente 100% fruta. Sin azúcar. Deshidratado a baja temperatura.</p>
-                <div class="precio">$6</div>
-                <button class="btn btn-small" onclick="addToCart('Crunchyroll de Piña Deshidratada', '$6', event)">AÑADIR AL CARRITO</button>
+        <div class="catalogo-item" onclick="toggleCatalogo('pina')">
+            <h3>▶ LÍNEA PIÑA DORADA MD2</h3>
+            <div class="catalogo-content" id="pina">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <img src="pina-productos.png" alt="Zumo de Piña 100% Natural">
+                        <h4>Zumo de Piña 100% Natural</h4>
+                        <p style="font-size:14px;margin:10px 0">NFC sin azúcares añadidos. Pasteurizado en frío. Brix 14-16°. Botella PET 1L.</p>
+                        <div class="precio">$8</div>
+                        <button class="btn btn-small" onclick="addToCart('Zumo de Piña 100% Natural', '$8', event)">AÑADIR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <img src="pina-productos.png" alt="Rodajas de Piña en Almíbar">
+                        <h4>Rodajas de Piña en Almíbar</h4>
+                        <p style="font-size:14px;margin:10px 0">Rodajas enteras en almíbar ligero. Lata 565g. Color dorado uniforme.</p>
+                        <div class="precio">$9</div>
+                        <button class="btn btn-small" onclick="addToCart('Rodajas de Piña en Almíbar', '$9', event)">AÑADIR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <img src="pina-productos.png" alt="Crunchyroll de Piña Deshidratada">
+                        <h4>Crunchyroll de Piña Deshidratada</h4>
+                        <p style="font-size:14px;margin:10px 0">Snack crujiente 100% fruta. Sin azúcar. Deshidratado a baja temperatura.</p>
+                        <div class="precio">$6</div>
+                        <button class="btn btn-small" onclick="addToCart('Crunchyroll de Piña Deshidratada', '$6', event)">AÑADIR AL CARRITO</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -184,11 +194,11 @@
                 <span class="badge">SCA 90+</span><span class="badge">Premium</span>
                 <div class="variedad-desc" id="v1">
                     <strong>Notas de Cata:</strong>
-                    <p>Bergamota, mango maduro, floral intenso, té Earl Grey, jazmín, papaya, miel de acacia. Acidez cítrica elegante tipo limón Meyer. Dulzura etérea con final prolongado a flores blancas.</p>
+                    <p>Bergamota, mango maduro, floral intenso, té Earl Grey, jazmín, papaya, miel de acacia. Acidez cítrica elegante tipo limón Meyer. Dulzura etérea con final prolongado a flores blancas. Cuerpo sedoso como seda líquida.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 2000-2100 msnm | Proceso: Lavado experimental con levaduras nativas | Varietal: Geisha panameña | Cosecha: Nov-Feb | Cuerpo: Etéreo, sedoso | Acidez: Cítrica alta brillante</p>
+                    <p>Altura: 2000-2100 msnm | Proceso: Lavado experimental con levaduras nativas seleccionadas | Varietal: Geisha panameña | Cosecha: Nov-Feb solo cerezas maduras rojas | Cuerpo: Etéreo, sedoso | Acidez: Cítrica alta brillante | Humedad: 10.5% | Densidad: 680g/L</p>
                     <strong>Características:</strong>
-                    <p>La variedad más exclusiva y cara del mundo. Solo 5 sacos/año disponibles. Altura extrema + microclima de montaña costera produce perfil floral-terpénico inigualable. Cultivo bajo sombra de guamos nativos. Fermentación anaeróbica controlada 48h. Secado lento 25 días. Precio: $50-80 USD/lb verde. Solo bajo reserva anual.</p>
+                    <p>La variedad más exclusiva y cara del mundo. Solo 5 sacos/año disponibles. Altura extrema + microclima de montaña costera produce perfil floral-terpénico inigualable. Cultivo bajo sombra de guamos nativos. Fermentación anaeróbica controlada 48h. Secado lento 25 días en camas africanas. Precio: $50-80 USD/lb verde. Solo bajo reserva anual. Trazabilidad blockchain completa.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Geisha', 'Consultar', event)">Consultar Disponibilidad</button>
                 </div>
             </div>
@@ -199,11 +209,11 @@
                 <span class="badge">SCA 86+</span><span class="badge">Especialidad</span>
                 <div class="variedad-desc" id="v2">
                     <strong>Notas de Cata:</strong>
-                    <p>Cítricos dulces, mandarina, caramelo rubio, chocolate con leche, nuez tostada, miel de caña, acidez brillante balanceada. Final limpio y dulce prolongado.</p>
+                    <p>Cítricos dulces, mandarina, caramelo rubio, chocolate con leche, nuez tostada, miel de caña, acidez brillante balanceada. Final limpio y dulce prolongado a caramelo.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional con doble fermentación 24h + 12h | Varietal: Villa Sarchí | Cosecha: May-Oct | Cuerpo: Medio, cremoso | Acidez: Media-alta</p>
+                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional con doble fermentación 24h + 12h | Varietal: Villa Sarchí | Cosecha: May-Oct | Cuerpo: Medio, cremoso | Acidez: Media-alta | Tostión: Media recomendada</p>
                     <strong>Características:</strong>
-                    <p>Variedad costarricense adaptada a Santander. Balance perfecto dulzor-acidez. Muy versátil para espresso y filtrados V60, Chemex. Resistente a roya, producción estable. 25 sacos/año disponibles. Perfil comercial premium para tostadores specialty.</p>
+                    <p>Variedad costarricense adaptada a Santander con excelente resultado. Balance perfecto dulzor-acidez. Muy versátil para espresso y filtrados V60, Chemex, Aeropress. Resistente a roya, producción estable. 25 sacos/año disponibles. Perfil comercial premium para tostadores specialty. Certificable Rainforest Alliance.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Villa Sarchí', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -216,9 +226,9 @@
                     <strong>Notas de Cata:</strong>
                     <p>Grosella negra, vino tinto, tomate seco, tamarindo, ciruela pasa, acidez fosfórica brillante, cuerpo jugoso tipo jugo de frutas rojas. Final vinoso complejo.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1700-1900 msnm | Proceso: Lavado doble fermentación keniano 36h + 12h sin agua | Varietal: SL28, SL34 | Cosecha: Jun-Dic | Cuerpo: Jugoso, denso | Acidez: Alta vibrante</p>
+                    <p>Altura: 1700-1900 msnm | Proceso: Lavado doble fermentación keniano 36h + 12h sin agua | Varietal: SL28, SL34 | Cosecha: Jun-Dic | Cuerpo: Jugoso, denso | Acidez: Alta vibrante | Secado: Camas africanas elevadas 15 días</p>
                     <strong>Características:</strong>
-                    <p>Varietales africanos adaptados a Colombia. Perfil salvaje y frutal único en el país, idéntico a los mejores Kenia AA. Fermentación sin agua, solo mucílago. Solo 15 sacos/año. Buscado por tostadores de competencia. Precio premium $35-45 USD/lb.</p>
+                    <p>Varietales africanos adaptados a Colombia con éxito. Perfil salvaje y frutal único en el país, idéntico a los mejores Kenia AA de Nyeri. Fermentación sin agua, solo mucílago. Solo 15 sacos/año. Buscado por tostadores de competencia. Precio premium $35-45 USD/lb. Exclusivo para exportación.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Kenia', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -231,9 +241,9 @@
                     <strong>Notas de Cata:</strong>
                     <p>Chocolate con leche, caramelo, nuez, almendra, cítricos suaves tipo naranja, acidez media balanceada. Dulzura panela. Final a cacao y caramelo.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1500-1700 msnm | Proceso: Lavado tradicional 18h | Varietal: Caturra rojo, Catuai amarillo, Bourbon | Cosecha: Sep-Ene | Cuerpo: Medio redondo | Acidez: Media | Balance: 9/10</p>
+                    <p>Altura: 1500-1700 msnm | Proceso: Lavado tradicional 18h | Varietal: Caturra rojo, Catuai amarillo, Bourbon | Cosecha: Sep-Ene | Cuerpo: Medio redondo | Acidez: Media | Balance: 9/10 | Defectos: 0-2</p>
                     <strong>Características:</strong>
-                    <p>Blend de trabajo diario para cafeterías. Consistencia lote a lote garantizada todo el año. Perfecto para espresso base, cappuccinos y blend de cafeterías. Volumen disponible 80 sacos/año. Relación calidad-precio excepcional. Certificable Rainforest y Fairtrade.</p>
+                    <p>Blend de trabajo diario para cafeterías. Consistencia lote a lote garantizada todo el año. Perfecto para espresso base, cappuccinos y blend de cafeterías. Volumen disponible 80 sacos/año. Relación calidad-precio excepcional. Certificable Rainforest y Fairtrade. Tolera tostión media a oscura sin perder dulzor.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Centroamericano', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -313,17 +323,4 @@
         <h2>MAYORISTAS</h2>
         <div class="mayoristas-hero">
             <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920">
-                <source src="https://cdn.coverr.co/videos/coverr-coffee-beans-falling-into-a-cup-4018/1080p.mp4" type="video/mp4">
-            </video>
-            <div class="slogan"><h3 class="gold-text">TU ÉXITO CABE EN UN CONTENEDOR</h3><p>Pero empieza con un pallet</p></div>
-        </div>
-        <div style="text-align:center">
-            <h3 class="gold-text">Capacidad: 40 contenedores FCL / mes</h3>
-            <p style="font-size:18px;margin:20px 0">Contenedores completos 20' y 40'. Pallets mixtos desde 1 pallet. Marca blanca con tu logo.</p>
-            <a class="btn" style="margin-top:30px" onclick="scrollToSection('pedidos')">SOLICITAR COTIZACIÓN</a>
-        </div>
-    </section>
-
-    <section id="pedidos">
-        <h2>PED
-            
+                <source src="https://cdn.coverr.co/videos/coverr-coffee-beans-falling-into-a-cup-4018/1080p.mp4" type="
