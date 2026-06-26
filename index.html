@@ -41,7 +41,7 @@
         .producto-card h4{font-size:1.2rem;margin:10px 0}
         .producto-card .precio{color:#D4AF37;font-size:1.8rem;font-weight:bold;margin:15px 0}
         .variedades{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;margin-top:50px}
-        .variedad{background:linear-gradient(135deg,#000 0%,#0d0d 100%);padding:30px;border:2px solid #D4AF37;cursor:pointer;transition:0.4s;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.5)}
+        .variedad{background:linear-gradient(135deg,#000 0%,#0d0d0d 100%);padding:30px;border:2px solid #D4AF37;cursor:pointer;transition:0.4s;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.5)}
         .variedad:hover{border-color:#fff;transform:translateY(-8px);box-shadow:0 15px 50px rgba(212,175,55,0.4)}
         .variedad h4{font-size:1.5rem;margin-bottom:12px}
         .variedad .origen{font-size:14px;color:#aaa;margin-bottom:15px;font-style:italic}
@@ -56,7 +56,7 @@
         .mayoristas-hero{position:relative;height:70vh;overflow:hidden;margin:50px 0;border:4px solid #D4AF37;border-radius:10px}
         .mayoristas-hero video{width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
         .slogan{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;background:rgba(0,0,0,0.9);padding:50px;border:3px solid #D4AF37;border-radius:10px}
-        .slogan h3{font-size:3rem;margin:0;text-shadow:3px 10px #000}
+        .slogan h3{font-size:3rem;margin:0;text-shadow:3px 3px 10px #000}
         .formulario{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);padding:50px;margin-top:30px;border:3px solid #D4AF37;border-radius:10px}
         .formulario input,.formulario textarea,.formulario select{width:100%;padding:18px;margin:15px 0;background:#0A2E1A;border:2px solid #D4AF37;color:#fff;font-size:16px;border-radius:5px}
         .contacto-item{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);margin:25px 0;padding:30px;cursor:pointer;border:2px solid #D4AF37;border-radius:10px}
@@ -126,21 +126,21 @@
                     <div class="producto-card">
                         <img src="palmito-productos.png" alt="Palmito en Conserva Clásico">
                         <h4>Palmito en Conserva Clásico</h4>
-                        <p style="font-size:14px;margin:10px 0">Corazones de palmito tiernos en salmuera natural. Textura firme y sabor suave. Ideal para ensaladas gourmet.</p>
+                        <p style="font-size:14px;margin:10px 0">Corazones de palmito tiernos en salmuera natural. Textura firme y sabor suave.</p>
                         <div class="precio">$12</div>
                         <button class="btn btn-small" onclick="addToCart('Palmito en Conserva Clásico', '$12', event)">AÑADIR AL CARRITO</button>
                     </div>
                     <div class="producto-card">
                         <img src="palmito-productos.png" alt="Palmito Premium Entero">
                         <h4>Palmito Premium Entero</h4>
-                        <p style="font-size:14px;margin:10px 0">Selección de los mejores tallos enteros. Sin fibra. Empaque al vacío. Certificación Kosher.</p>
+                        <p style="font-size:14px;margin:10px 0">Selección de los mejores tallos enteros. Sin fibra. Empaque al vacío.</p>
                         <div class="precio">$15</div>
                         <button class="btn btn-small" onclick="addToCart('Palmito Premium Entero', '$15', event)">AÑADIR AL CARRITO</button>
                     </div>
                     <div class="producto-card">
                         <img src="palmito-productos.png" alt="Palmito en Rodajas">
                         <h4>Palmito en Rodajas</h4>
-                        <p style="font-size:14px;margin:10px 0">Corte uniforme 8mm. Listo para servir. Perfecto para pizzas, pastas y canapés.</p>
+                        <p style="font-size:14px;margin:10px 0">Corte uniforme 8mm. Listo para servir. Perfecto para pizzas y pastas.</p>
                         <div class="precio">$10</div>
                         <button class="btn btn-small" onclick="addToCart('Palmito en Rodajas', '$10', event)">AÑADIR AL CARRITO</button>
                     </div>
@@ -155,7 +155,7 @@
                     <div class="producto-card">
                         <img src="pina-productos.png" alt="Zumo de Piña 100% Natural">
                         <h4>Zumo de Piña 100% Natural</h4>
-                        <p style="font-size:14px;margin:10px 0">NFC sin azúcares añadidos. Pasteurizado en frío. Brix 14-16°. Botella PET 1L.</p>
+                        <p style="font-size:14px;margin:10px 0">NFC sin azúcares añadidos. Pasteurizado en frío. Brix 14-16°.</p>
                         <div class="precio">$8</div>
                         <button class="btn btn-small" onclick="addToCart('Zumo de Piña 100% Natural', '$8', event)">AÑADIR AL CARRITO</button>
                     </div>
@@ -194,11 +194,11 @@
                 <span class="badge">SCA 90+</span><span class="badge">Premium</span>
                 <div class="variedad-desc" id="v1">
                     <strong>Notas de Cata:</strong>
-                    <p>Bergamota, mango maduro, floral intenso, té Earl Grey, jazmín, papaya, miel de acacia. Acidez cítrica elegante tipo limón Meyer. Dulzura etérea con final prolongado a flores blancas. Cuerpo sedoso como seda líquida.</p>
+                    <p>Bergamota, mango maduro, floral intenso, té Earl Grey, jazmín, papaya, miel de acacia. Acidez cítrica elegante tipo limón Meyer. Dulzura etérea con final prolongado a flores blancas.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 2000-2100 msnm | Proceso: Lavado experimental con levaduras nativas seleccionadas | Varietal: Geisha panameña | Cosecha: Nov-Feb solo cerezas maduras rojas | Cuerpo: Etéreo, sedoso | Acidez: Cítrica alta brillante | Humedad: 10.5% | Densidad: 680g/L</p>
+                    <p>Altura: 2000-2100 msnm | Proceso: Lavado experimental con levaduras nativas | Varietal: Geisha panameña | Cosecha: Nov-Feb | Cuerpo: Etéreo, sedoso | Acidez: Cítrica alta brillante</p>
                     <strong>Características:</strong>
-                    <p>La variedad más exclusiva y cara del mundo. Solo 5 sacos/año disponibles. Altura extrema + microclima de montaña costera produce perfil floral-terpénico inigualable. Cultivo bajo sombra de guamos nativos. Fermentación anaeróbica controlada 48h. Secado lento 25 días en camas africanas. Precio: $50-80 USD/lb verde. Solo bajo reserva anual. Trazabilidad blockchain completa.</p>
+                    <p>La variedad más exclusiva y cara del mundo. Solo 5 sacos/año. Altura extrema + microclima de montaña costera produce perfil floral-terpénico inigualable. Fermentación anaeróbica 48h. Secado 25 días. Precio: $50-80 USD/lb verde. Solo bajo reserva anual.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Geisha', 'Consultar', event)">Consultar Disponibilidad</button>
                 </div>
             </div>
@@ -209,11 +209,11 @@
                 <span class="badge">SCA 86+</span><span class="badge">Especialidad</span>
                 <div class="variedad-desc" id="v2">
                     <strong>Notas de Cata:</strong>
-                    <p>Cítricos dulces, mandarina, caramelo rubio, chocolate con leche, nuez tostada, miel de caña, acidez brillante balanceada. Final limpio y dulce prolongado a caramelo.</p>
+                    <p>Cítricos dulces, mandarina, caramelo rubio, chocolate con leche, nuez tostada, miel de caña, acidez brillante balanceada.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional con doble fermentación 24h + 12h | Varietal: Villa Sarchí | Cosecha: May-Oct | Cuerpo: Medio, cremoso | Acidez: Media-alta | Tostión: Media recomendada</p>
+                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional con doble fermentación 24h + 12h | Varietal: Villa Sarchí | Cosecha: May-Oct | Cuerpo: Medio, cremoso | Acidez: Media-alta</p>
                     <strong>Características:</strong>
-                    <p>Variedad costarricense adaptada a Santander con excelente resultado. Balance perfecto dulzor-acidez. Muy versátil para espresso y filtrados V60, Chemex, Aeropress. Resistente a roya, producción estable. 25 sacos/año disponibles. Perfil comercial premium para tostadores specialty. Certificable Rainforest Alliance.</p>
+                    <p>Variedad costarricense adaptada a Santander. Balance perfecto dulzor-acidez. Muy versátil para espresso y filtrados. Resistente a roya. 25 sacos/año. Certificable Rainforest Alliance.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Villa Sarchí', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -224,11 +224,11 @@
                 <span class="badge">SCA 87+</span><span class="badge">Exótico</span>
                 <div class="variedad-desc" id="v3">
                     <strong>Notas de Cata:</strong>
-                    <p>Grosella negra, vino tinto, tomate seco, tamarindo, ciruela pasa, acidez fosfórica brillante, cuerpo jugoso tipo jugo de frutas rojas. Final vinoso complejo.</p>
+                    <p>Grosella negra, vino tinto, tomate seco, tamarindo, ciruela pasa, acidez fosfórica brillante, cuerpo jugoso.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1700-1900 msnm | Proceso: Lavado doble fermentación keniano 36h + 12h sin agua | Varietal: SL28, SL34 | Cosecha: Jun-Dic | Cuerpo: Jugoso, denso | Acidez: Alta vibrante | Secado: Camas africanas elevadas 15 días</p>
+                    <p>Altura: 1700-1900 msnm | Proceso: Lavado doble fermentación keniano 36h + 12h sin agua | Varietal: SL28, SL34 | Cosecha: Jun-Dic | Cuerpo: Jugoso, denso | Acidez: Alta vibrante</p>
                     <strong>Características:</strong>
-                    <p>Varietales africanos adaptados a Colombia con éxito. Perfil salvaje y frutal único en el país, idéntico a los mejores Kenia AA de Nyeri. Fermentación sin agua, solo mucílago. Solo 15 sacos/año. Buscado por tostadores de competencia. Precio premium $35-45 USD/lb. Exclusivo para exportación.</p>
+                    <p>Varietales africanos adaptados a Colombia. Perfil salvaje y frutal único. Fermentación sin agua, solo mucílago. Solo 15 sacos/año. Buscado por tostadores de competencia. Precio premium $35-45 USD/lb.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Kenia', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -239,11 +239,11 @@
                 <span class="badge">SCA 85+</span><span class="badge">Balanceado</span>
                 <div class="variedad-desc" id="v4">
                     <strong>Notas de Cata:</strong>
-                    <p>Chocolate con leche, caramelo, nuez, almendra, cítricos suaves tipo naranja, acidez media balanceada. Dulzura panela. Final a cacao y caramelo.</p>
+                    <p>Chocolate con leche, caramelo, nuez, almendra, cítricos suaves tipo naranja, acidez media balanceada. Dulzura panela.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1500-1700 msnm | Proceso: Lavado tradicional 18h | Varietal: Caturra rojo, Catuai amarillo, Bourbon | Cosecha: Sep-Ene | Cuerpo: Medio redondo | Acidez: Media | Balance: 9/10 | Defectos: 0-2</p>
+                    <p>Altura: 1500-1700 msnm | Proceso: Lavado tradicional 18h | Varietal: Caturra rojo, Catuai amarillo, Bourbon | Cosecha: Sep-Ene | Cuerpo: Medio redondo | Acidez: Media | Balance: 9/10</p>
                     <strong>Características:</strong>
-                    <p>Blend de trabajo diario para cafeterías. Consistencia lote a lote garantizada todo el año. Perfecto para espresso base, cappuccinos y blend de cafeterías. Volumen disponible 80 sacos/año. Relación calidad-precio excepcional. Certificable Rainforest y Fairtrade. Tolera tostión media a oscura sin perder dulzor.</p>
+                    <p>Blend de trabajo diario para cafeterías. Consistencia lote a lote garantizada. Perfecto para espresso base. Volumen disponible 80 sacos/año. Relación calidad-precio excepcional. Certificable Rainforest y Fairtrade.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Centroamericano', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -254,11 +254,11 @@
                 <span class="badge">SCA 84.5</span><span class="badge">Clásico</span>
                 <div class="variedad-desc" id="v5">
                     <strong>Notas de Cata:</strong>
-                    <p>Panela, chocolate amargo 70%, especias dulces, canela, clavo de olor, acidez cítrica suave tipo lima, final prolongado a cacao y especias.</p>
+                    <p>Panela, chocolate amargo 70%, especias dulces, canela, clavo, acidez cítrica suave tipo lima, final prolongado a cacao.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional con fermentación 18h | Varietal: Typica arábica ancestral | Cosecha: Abr-Sep | Cuerpo: Medio | Acidez: Media-baja | Tueste: Medio-oscuro recomendado</p>
+                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional con fermentación 18h | Varietal: Typica arábica ancestral | Cosecha: Abr-Sep | Cuerpo: Medio | Acidez: Media-baja | Tueste: Medio-oscuro</p>
                     <strong>Características:</strong>
-                    <p>Variedad ancestral colombiana, la original. Perfil clásico de taza colombiana tradicional. Baja producción pero alta calidad y diferenciación. Ideal para tostión media-oscura. 20 sacos/año. Orgánico certificado USDA/EU.</p>
+                    <p>Variedad ancestral colombiana, la original. Perfil clásico de taza colombiana tradicional. Baja producción pero alta calidad. Ideal para tostión media-oscura. 20 sacos/año. Orgánico certificado USDA/EU.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Typica Lima', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -269,11 +269,11 @@
                 <span class="badge">SCA 85.5</span><span class="badge">Honey</span>
                 <div class="variedad-desc" id="v6">
                     <strong>Notas de Cata:</strong>
-                    <p>Miel de abeja pura, caramelo rubio, frutos secos, almendra tostada, dátil, pasas rubias, cuerpo sedoso, dulzura intensa, baja acidez.</p>
+                    <p>Miel de abeja pura, caramelo rubio, frutos secos, almendra tostada, dátil, pasas rubias, cuerpo sedoso, dulzura intensa.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1700-1850 msnm | Proceso: Honey rojo - 60% mucílago adherido | Varietal: Typica | Cosecha: May-Oct | Cuerpo: Sedoso, completo, syrupy | Acidez: Baja-media | Secado: 25 días en camas</p>
+                    <p>Altura: 1700-1850 msnm | Proceso: Honey rojo - 60% mucílago adherido | Varietal: Typica | Cosecha: May-Oct | Cuerpo: Sedoso, completo, syrupy | Acidez: Baja-media | Secado: 25 días</p>
                     <strong>Características:</strong>
-                    <p>Proceso honey que maximiza dulzura natural dejando 60% del mucílago en el grano durante el secado. Secado lento 25 días en camas elevadas. Ideal para cold brew, espresso y filtrados. 18 sacos/año. Proceso de alto riesgo, alta recompensa.</p>
+                    <p>Proceso honey que maximiza dulzura natural. Secado lento 25 días en camas elevadas. Ideal para cold brew, espresso y filtrados. 18 sacos/año. Proceso de alto riesgo, alta recompensa.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Typica Lourdes', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -284,11 +284,11 @@
                 <span class="badge">SCA 86+</span><span class="badge">Natural</span>
                 <div class="variedad-desc" id="v7">
                     <strong>Notas de Cata:</strong>
-                    <p>Frutos rojos intensos, fresa madura, frambuesa, vino tinto, chocolate oscuro, cuerpo completo syrupy, fermento frutal controlado, especias dulces, pasas.</p>
+                    <p>Frutos rojos intensos, fresa madura, frambuesa, vino tinto, chocolate oscuro, cuerpo completo syrupy, fermento frutal controlado.</p>
                     <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1650-1800 msnm | Proceso: Natural - secado en fruta entera 28 días | Varietal: Typica | Cosecha: Oct-Feb | Cuerpo: Completo, syrupy | Acidez: Media frutal | Defectos: 0 | Humedad final: 11%</p>
+                    <p>Altura: 1650-1800 msnm | Proceso: Natural - secado en fruta entera 28 días | Varietal: Typica | Cosecha: Oct-Feb | Cuerpo: Completo, syrupy | Acidez: Media frutal | Defectos: 0</p>
                     <strong>Características:</strong>
-                    <p>Secado en fruta entera en camas africanas elevadas. Volteo manual cada 2 horas primeros 10 días. Fermentación controlada sin defectos fenólicos. Perfil complejo para cupping y competencias. 12 sacos/año. Solo exportación. Certificado libre de Ocratoxina A.</p>
+                    <p>Secado en fruta entera en camas africanas. Volteo manual cada 2 horas primeros 10 días. Fermentación controlada sin defectos fenólicos. 12 sacos/año. Solo exportación. Certificado libre de Ocratoxina A.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Typica San Roque', 'Saco 70kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -299,11 +299,11 @@
                 <span class="badge">SCA 87+</span><span class="badge">Experimental</span>
                 <div class="variedad-desc" id="v8">
                     <strong>Notas de Cata:</strong>
-                    <p>Floral intenso, jazmín, flor de azahar, té verde, bergamota, cítricos, miel de flores silvestres, acidez brillante compleja, final floral persistente.</p>
+                    <p>Floral intenso, jazmín, flor de azahar, té verde, bergamota, cítricos, miel de flores silvestres, acidez brillante compleja.</p>
                     <strong>Perfil Técnico:</strong>
                     <p>Altura: 1900-2050 msnm | Proceso: Lavado con levaduras seleccionadas Saccharomyces | Varietal: Typica Mejorado Cenicafé 1 | Cosecha: Jun-Nov | Cuerpo: Etéreo, té-like | Acidez: Alta compleja | Fermentación: 72h anaeróbica</p>
                     <strong>Características:</strong>
-                    <p>Variedad desarrollada por Cenicafé durante 15 años de investigación. Altura extrema + proceso experimental = perfil único mundial. Inoculación con levaduras nativas aisladas de la finca. Solo 8 sacos/año. Proyecto I+D con Universidad Nacional. Precio: $40-60 USD/lb. Para tostadores de élite y competencias internacionales.</p>
+                    <p>Variedad desarrollada por Cenicafé durante 15 años. Altura extrema + proceso experimental = perfil único mundial. Inoculación con levaduras nativas. Solo 8 sacos/año. Proyecto I+D con Universidad Nacional. Precio: $40-60 USD/lb.</p>
                     <button class="btn btn-small" onclick="addToCart('Café Typica Mejorado', 'Saco 35kg', event)">Añadir al Carrito</button>
                 </div>
             </div>
@@ -322,5 +322,41 @@
     <section id="mayoristas">
         <h2>MAYORISTAS</h2>
         <div class="mayoristas-hero">
-            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920">
-                <source src="https://cdn.coverr.co/videos/coverr-coffee-beans-falling-into-a-cup-4018/1080p.mp4" type="
+            <video autoplay muted loop playsinline>
+                <source src="contenedores.mp4" type="video/mp4">
+            </video>
+            <div class="slogan"><h3 class="gold-text">TU ÉXITO CABE EN UN CONTENEDOR</h3><p>Pero empieza con un pallet</p></div>
+        </div>
+        <div style="text-align:center">
+            <h3 class="gold-text">Capacidad: 40 contenedores FCL / mes</h3>
+            <p style="font-size:18px;margin:20px 0">Contenedores completos 20' y 40'. Pallets mixtos desde 1 pallet. Marca blanca con tu logo.</p>
+            <a class="btn" style="margin-top:30px" onclick="scrollToSection('pedidos')">SOLICITAR COTIZACIÓN</a>
+        </div>
+    </section>
+
+    <section id="pedidos">
+        <h2>PEDIDOS</h2>
+        <div class="formulario" style="display:block">
+            <select id="tipo"><option value="">Tipo de cliente *</option><option>Mayorista - FCL</option><option>Distribuidor</option><option>Retail</option><option>HORECA</option></select>
+            <input type="text" id="nombre" placeholder="Nombre / Empresa *">
+            <input type="email" id="email" placeholder="Email *">
+            <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp *">
+            <input type="text" id="pais" placeholder="País / Puerto destino *">
+            <textarea id="mensaje" rows="5" placeholder="Productos, volumen, fecha requerida..."></textarea>
+            <button class="btn" onclick="enviarWhatsApp()">ENVIAR POR WHATSAPP</button>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>CONTACTO</h2>
+        <div class="contacto-item" onclick="toggleContacto('c1')">
+            <h3>▶ Oficinas y Planta</h3>
+            <div class="contacto-content" id="c1">
+                <p><strong>Colombia:</strong> Km 3 Vía Lebrija, Santander</p>
+                <p>Planta de proceso y oficinas centrales</p>
+                <p><strong>España:</strong> Valencia, Comunidad Valenciana</p>
+                <p>Hub logístico Europa</p>
+            </div>
+        </div>
+        <div class="contacto-item" onclick="toggleContacto('c2')">
+            <h3>
