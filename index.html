@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jolly Foods - Del Origen a tu Éxito</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+        body{font-family:'Arial',sans-serif;background:#0A2E1A;color:#fff}
+        header{background:#000;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:3px solid #D4AF37}
+        .logo span{font-weight:bold;font-size:22px;color:#D4AF37}
+        nav{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+        nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;transition:0.3s}
+        nav a:hover{color:#D4AF37}
+        #cartBtn{background:#D4AF37;color:#000;border:none;padding:10px 20px;font-weight:bold;cursor:pointer;border-radius:5px}
+        .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+        .hero video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:1;filter:brightness(0.6)}
+        .hero-overlay{position:absolute;width:100%;height:100%;background:rgba(10,46,26,0.7);z-index:2}
+        .hero-content{position:relative;z-index:3;text-align:center;padding:0 20px}
+        .hero h1{font-size:4rem;margin-bottom:25px;color:#D4AF37;text-shadow:4px 4px 20px #000}
+        .btn{background:#D4AF37;color:#000;padding:20px 50px;border:none;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;font-size:17px;border-radius:5px}
+        .btn:hover{background:#fff}
+        section{padding:100px 5%;max-width:1400px;margin:auto}
+        h2{font-size:3rem;margin-bottom:50px;color:#D4AF37;text-align:center}
+        .gold-text{color:#D4AF37}
+        .productos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px}
+        .producto-card{background:#000;padding:25px;border:2px solid #D4AF37;border-radius:10px;text-align:center}
+        .producto-card img{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:15px;background:#222}
+        .variedades{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;margin-top:50px}
+        .variedad{background:#000;padding:30px;border:2px solid #D4AF37;cursor:pointer;border-radius:10px}
+        .variedad-desc{display:none;margin-top:20px;font-size:15px;line-height:2;background:#0A2E1A;padding:25px;border-radius:8px;border:2px solid #D4AF37}
+        .variedad-desc.active{display:block}
+        .cart-modal{display:none;position:fixed;top:0;right:0;width:420px;height:100vh;background:#000;border-left:4px solid #D4AF37;z-index:2000;padding:35px;overflow-y:auto}
+        .cart-modal.active{display:block}
+        @media(max-width:768px){.hero h1{font-size:2.5rem}nav{gap:10px}.cart-modal{width:100%}}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><span>JOLLY FOODS</span></div>
+        <nav>
+            <a onclick="scrollToSection('inicio')">INICIO</a>
+            <a onclick="scrollToSection('nosotros')">NOSOTROS</a>
+            <a onclick="scrollToSection('catalogo')">CATÁLOGO</a>
+            <a onclick="scrollToSection('cafe')">CAFÉ GOURMET</a>
+            <a onclick="scrollToSection('calidad')">CALIDAD</a>
+            <a onclick="scrollToSection('mayoristas')">MAYORISTAS</a>
+            <a onclick="scrollToSection('pedidos')">PEDIDOS</a>
+            <a onclick="scrollToSection('contacto')">CONTACTO</a>
+            <button id="cartBtn" onclick="toggleCart()">🛒 Carrito (<span id="cartCount">0</span>)</button>
+        </nav>
+    </header>
+
+    <div class="hero" id="inicio">
+        <video autoplay muted loop playsinline>
+            <source src="cafe-rojo.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>DEL ORIGEN A TU ÉXITO</h1>
+            <a class="btn" onclick="scrollToSection('catalogo')">EXPLORA NUESTRO CATÁLOGO</a>
+        </div>
+    </div>
+
+    <section id="nosotros">
+        <h2>NOSOTROS</h2>
+        <p style="text-align:center;font-size:18px">Jolly Foods nace en el corazón de Santander, Colombia. Somos el puente entre 300+ familias agricultoras y los mercados más exigentes.</p>
+    </section>
+
+    <section id="catalogo">
+        <h2>CATÁLOGO</h2>
+        <h3 class="gold-text">LÍNEA PALMITO PREMIUM</h3>
+        <div class="productos-grid">
+            <div class="producto-card">
+                <img src="palmito-productos.png" alt="Palmito">
+                <h4>Palmito en Conserva Clásico</h4>
+                <div class="gold-text" style="font-size:1.8rem;margin:15px 0">$12</div>
+                <button class="btn" onclick="addToCart('Palmito en Conserva Clásico', '$12', event)">AÑADIR</button>
+            </div>
+        </div>
+        <h3 class="gold-text" style="margin-top:50px">LÍNEA PIÑA DORADA MD2</h3>
+        <div class="productos-grid">
+            <div class="producto-card">
+                <img src="pina-productos.png" alt="Piña">
+                <h4>Zumo de Piña 100% Natural</h4>
+                <div class="gold-text" style="font-size:1.8rem;margin:15px 0">$8</div>
+                <button class="btn" onclick="addToCart('Zumo de Piña', '$8', event)">AÑADIR</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="cafe">
+        <h2>CAFÉ GOURMET - 8 VARIEDADES</h2>
+        <div class="variedades">
+            <div class="variedad" onclick="toggleVariedad('v1',event)">
+                <h4>1. GEISHA - SCA 90+</h4>
+                <p>Sierra Nevada - 2000msnm</p>
+                <div class="variedad-desc" id="v1">
+                    <strong>Notas:</strong><p>Bergamota, mango maduro, floral intenso, té Earl Grey. Acidez cítrica elegante.</p>
+                    <strong>Perfil:</strong><p>Altura: 2000-2100 msnm | Proceso: Lavado experimental | Cuerpo: Etéreo</p>
+                    <strong>Características:</strong><p>La variedad más exclusiva del mundo. Solo 5 sacos/año. $50-80 USD/lb.</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v2',event)">
+                <h4>2. VILLA SARCHÍ - SCA 86+</h4>
+                <p>Costa Rica adaptado - 1700msnm</p>
+                <div class="variedad-desc" id="v2">
+                    <strong>Notas:</strong><p>Cítricos dulces, caramelo rubio, chocolate con leche, nuez tostada.</p>
+                    <strong>Perfil:</strong><p>Altura: 1600-1800 msnm | Proceso: Lavado doble fermentación | Cuerpo: Cremoso</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v3',event)">
+                <h4>3. KENIA - SCA 87+</h4>
+                <p>SL28/SL34 - 1800msnm</p>
+                <div class="variedad-desc" id="v3">
+                    <strong>Notas:</strong><p>Grosella negra, vino tinto, tamarindo, acidez fosfórica brillante.</p>
+                    <strong>Perfil:</strong><p>Proceso: Lavado keniano sin agua | Cuerpo: Jugoso</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v4',event)">
+                <h4>4. CENTROAMERICANO - SCA 85+</h4>
+                <p>Blend Caturra/Catuai - 1600msnm</p>
+                <div class="variedad-desc" id="v4">
+                    <strong>Notas:</strong><p>Chocolate con leche, caramelo, nuez, acidez media balanceada.</p>
+                    <strong>Perfil:</strong><p>Perfecto para espresso base. 80 sacos/año disponibles.</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v5',event)">
+                <h4>5. TYPICA LIMA - SCA 84.5</h4>
+                <p>Typica tradicional - 1700msnm</p>
+                <div class="variedad-desc" id="v5">
+                    <strong>Notas:</strong><p>Panela, chocolate amargo, especias dulces, canela.</p>
+                    <strong>Perfil:</strong><p>Variedad ancestral colombiana. Orgánico certificado.</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v6',event)">
+                <h4>6. TYPICA LOURDES - SCA 85.5</h4>
+                <p>Typica Honey - 1750msnm</p>
+                <div class="variedad-desc" id="v6">
+                    <strong>Notas:</strong><p>Miel de abeja, caramelo rubio, frutos secos, dulzura intensa.</p>
+                    <strong>Perfil:</strong><p>Proceso: Honey rojo 60% mucílago | Secado: 25 días</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v7',event)">
+                <h4>7. TYPICA SAN ROQUE - SCA 86+</h4>
+                <p>Typica Natural - 1700msnm</p>
+                <div class="variedad-desc" id="v7">
+                    <strong>Notas:</strong><p>Frutos rojos, fresa madura, vino tinto, cuerpo syrupy.</p>
+                    <strong>Perfil:</strong><p>Proceso: Natural - secado en fruta 28 días | Solo exportación</p>
+                </div>
+            </div>
+            <div class="variedad" onclick="toggleVariedad('v8',event)">
+                <h4>8. TYPICA MEJORADO - SCA 87+</h4>
+                <p>Cenicafé - 1950msnm</p>
+                <div class="variedad-desc" id="v8">
+                    <strong>Notas:</strong><p>Floral intenso, jazmín, té verde, bergamota, miel de flores.</p>
+                    <strong>Perfil:</strong><p>Proceso: Lavado con levaduras | Fermentación: 72h anaeróbica | Solo 8 sacos/año</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calidad"><h2>CALIDAD</h2><p style="text-align:center">100% Trazabilidad Blockchain | 5 Certificaciones | 0 Atajos</p></section>
+    
+    <section id="mayoristas">
+        <h2>MAYORISTAS</h2>
+        <video controls style="width:100%;border:4px solid #D4AF37">
+            <source src="contenedores.mp4" type="video/mp4">
+        </video>
+        <h3 class="gold-text" style="text-align:center;margin-top:30px">TU ÉXITO CABE EN UN CONTENEDOR</h3>
+    </section>
+
+    <section id="pedidos"><h2>PEDIDOS</h2><p style="text-align:center">WhatsApp: +57 300 000 0000 | Email: ventas@jollyfoods.com</p></section>
+    <section id="contacto"><h2>CONTACTO</h2><p style="text-align:center">Colombia: Km 3 Vía Lebrija, Santander | España: Valencia</p></section>
+
+    <footer><p class="gold-text">JOLLY FOODS - DEL ORIGEN A TU ÉXITO</p></footer>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button onclick="toggleCart()" style="background:none;border:none;color:#D4AF37;font-size:30px;cursor:pointer">×</button>
+        </div>
+        <div id="cartItems"></div>
+    </div>
+
+<script>
+let cart = [];
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function toggleVariedad(id,e){e.stopPropagation();document.getElementById(id).classList.toggle('active')}
+function toggleCart(){document.getElementById('cartModal').classList.toggle('active')}
+function addToCart(name,price,e){e.stopPropagation();cart.push({name,price});document.getElementById('cartCount').textContent=cart.length;updateCart();alert('Añadido: '+name)}
+function updateCart(){let html='';cart.forEach((item,i)=>{html+=`<div style="background:#0A2E1A;padding:18px;margin:12px 0;border:2px solid #D4AF37"><strong>${item.name}</strong><br>${item.price}</div>`});document.getElementById('cartItems').innerHTML=html||'<p>Carrito vacío</p>'}
+</script>
+</body>
+</html>
