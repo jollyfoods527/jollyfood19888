@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jolly Foods - Café de Especialidad</title>
+    <title>Jolly Foods</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+        *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:Arial,sans-serif;background:#0A2E1A;color:#fff}
         header{background:#000;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:3px solid #D4AF37}
-        .logo span{font-weight:bold;font-size:22px;color:#D4AF37}
-        nav{display:flex;gap:25px;align-items:center;flex-wrap:wrap}
-        nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px;transition:0.3s;cursor:pointer}
+        .logo{font-weight:bold;font-size:22px;color:#D4AF37}
+        nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+        nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer}
         nav a:hover{color:#D4AF37}
         .dropdown{position:relative}
         .dropdown-content{display:none;position:absolute;top:100%;left:0;background:#000;border:2px solid #D4AF37;border-radius:8px;min-width:280px;margin-top:10px;z-index:1001}
-        .dropdown-content.active{display:block}
+        .dropdown-content.show{display:block}
         .dropdown-content a{display:block;padding:12px 20px;color:#fff;text-decoration:none;border-bottom:1px solid #D4AF37;font-size:13px}
         .dropdown-content a:hover{background:#0A2E1A;color:#D4AF37}
         .dropdown-content a:last-child{border-bottom:none}
         .dropdown-title{padding:10px 20px;background:#0A2E1A;color:#D4AF37;font-weight:bold;font-size:12px;border-bottom:1px solid #D4AF37}
         #cartBtn{background:#D4AF37;color:#000;border:none;padding:8px 20px;border-radius:5px;font-weight:bold;cursor:pointer}
-        .hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#000}
+        .hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:#000}
         .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
         .hero-content{position:relative;z-index:2;padding:0 20px;max-width:900px}
-        .hero h1{font-size:5.5rem;color:#D4AF37;text-shadow:0 0 30px rgba(212,175,55,0.9);margin-bottom:20px;line-height:1.1}
-        .hero h2{font-size:2.2rem;margin-bottom:20px;font-weight:300}
-        .hero p{font-size:1.3rem;margin-bottom:30px;line-height:1.8}
-        .btn{padding:15px 35px;border:2px solid #D4AF37;background:transparent;color:#D4AF37;font-weight:bold;cursor:pointer;border-radius:8px;margin:10px;transition:0.3s;font-size:1rem}
-        .btn:hover{background:#D4AF37;color:#000;transform:scale(1.05)}
+        .hero h1{font-size:5rem;color:#D4AF37;text-shadow:0 0 30px rgba(212,175,55,0.9);margin-bottom:20px}
+        .hero h2{font-size:2rem;margin-bottom:20px;font-weight:300}
+        .hero p{font-size:1.2rem;margin-bottom:30px;line-height:1.8}
+        .btn{padding:15px 35px;border:2px solid #D4AF37;background:transparent;color:#D4AF37;font-weight:bold;cursor:pointer;border-radius:8px;margin:10px;font-size:1rem}
+        .btn:hover{background:#D4AF37;color:#000}
         section{padding:80px 5%}
         .section-title{text-align:center;font-size:2.8rem;color:#D4AF37;margin-bottom:50px}
-        .nosotros-content{max-width:900px;margin:0 auto;line-height:2;font-size:1.15rem}
+        .nosotros-content{max-width:900px;margin:0 auto;line-height:2;font-size:1.1rem}
         .nosotros-content p{margin-bottom:25px}
         .nosotros-content h3{color:#D4AF37;font-size:1.8rem;margin:40px 0 20px}
-        .btn-antonio{display:inline-block;background:#D4AF37;color:#000;padding:14px 35px;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:20px;transition:0.3s}
-        .btn-antonio:hover{background:#fff;transform:scale(1.05)}
+        .btn-antonio{display:inline-block;background:#D4AF37;color:#000;padding:14px 35px;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:20px}
         .catalogo-item{background:#000;margin:20px 0;padding:30px;border:3px solid #D4AF37;border-radius:12px}
         .catalogo-header{display:flex;justify-content:space-between;align-items:center;font-size:1.4rem;font-weight:bold;cursor:pointer}
         .catalogo-content{max-height:0;overflow:hidden;transition:max-height 0.6s}
@@ -67,22 +66,15 @@
         .cart-modal.active{display:block}
         .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
         .cart-item{background:#0A2E1A;padding:18px;margin:12px 0;border:2px solid #D4AF37;border-radius:8px}
-        .cart-item-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-        .cart-item-name{font-weight:bold;color:#D4AF37}
+        .cart-item-name{font-weight:bold;color:#D4AF37;margin-bottom:5px}
         .cart-item-price{font-size:1.3rem;color:#D4AF37;font-weight:bold}
-        .cart-item-controls{display:flex;justify-content:space-between;align-items:center}
-        .qty-controls{display:flex;gap:10px;align-items:center}
-        .qty-btn{background:#D4AF37;color:#000;border:none;width:30px;height:30px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:1.2rem}
-        .remove-btn{background:#ff0000;color:#fff;border:none;padding:5px 15px;border-radius:5px;cursor:pointer;font-size:0.9rem}
-        .cart-total{background:#0A2E1A;padding:20px;border:3px solid #D4AF37;border-radius:8px;margin-top:20px}
-        .cart-total-row{display:flex;justify-content:space-between;font-size:1.5rem;font-weight:bold;color:#D4AF37}
         footer{background:#000;padding:40px 5%;text-align:center;border-top:3px solid #D4AF37}
         @media(max-width:768px){.hero h1{font-size:3rem}nav{gap:10px}nav a{font-size:12px}.cafe-ficha{grid-template-columns:1fr}.dropdown-content{left:-100px}.cart-modal{width:100%}}
     </style>
 </head>
 <body>
     <header>
-        <div class="logo"><span>JOLLY FOODS</span></div>
+        <div class="logo">JOLLY FOODS</div>
         <nav>
             <a class="nav-link" data-target="inicio">INICIO</a>
             <a class="nav-link" data-target="nosotros">NOSOTROS</a>
@@ -112,12 +104,12 @@
                 </div>
             </div>
             <a class="nav-link" data-target="pedidos">PEDIDOS</a>
-            <button id="cartBtn">CARRITO (<span id="cartCount">0</span>)</button>
+            <button id="cartBtn">CARRITO <span id="cartCount">0</span></button>
         </nav>
     </header>
 
     <section class="hero" id="inicio">
-        <video autoplay muted loop playsinline preload="auto">
+        <video autoplay muted loop playsinline>
             <source src="./zerezas.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
@@ -136,27 +128,28 @@
             <p>Jolly Foods nace en Naranjo, Alajuela, en el corazón cafetalero de Costa Rica. La familia Barrantes, con tres generaciones de caficultores, decide llevar su café más allá de la cooperativa local. Empezamos con solo 2 hectáreas de Typica en Finca El Puchol, a 1.500 msnm.</p>
             
             <h3>La Expansión: 2010</h3>
-            <p>Antonio Barrantes, agrónomo especializado en café de especialidad, introduce variedades exóticas: Geisha de Panamá, SL28 de Kenia y Villa Sarchí endémica. Paralelamente, establecemos alianzas con productores de palmito en Santo Domingo, Ecuador, y piña Golden en la zona Atlántica. Nace la visión de tres líneas premium bajo una sola marca.</p>
+            <p>Antonio Barrantes, agrónomo especializado en café de especialidad, introduce variedades exóticas: Geisha de Panamá, SL28 de Kenia y Villa Sarchi endémica. Paralelamente, establecemos alianzas con productores de palmito en Santo Domingo, Ecuador, y piña Golden en la zona Atlántica. Nace la visión de tres líneas premium bajo una sola marca.</p>
 
             <h3>Hoy: 2026</h3>
             <p>Somos exportadores directos a 12 países. Nuestro Geisha SCA 92 puntos compite en subastas internacionales. El palmito ecuatoriano llega fresco cada semana. La piña Golden se procesa IQF a las 6 horas de cosecha. Mantenemos producción limitada: 40kg de Geisha, 20 contenedores de café al año. Calidad sobre cantidad.</p>
             
             <p>Los palmitos se cortan del núcleo de palmeras nativas de América del Sur y América Central. Luego de la cosecha, se cortan en diferentes presentaciones y se envasan en agua o salmuera. El delicado sabor convierte a este alimento en una opción popular para ensaladas, pero también permite la preparación de una gran variedad de recetas creativas y nutritivas.</p>
             
-            <p><strong>Nuestra filosofía:</strong> Del origen a tu éxito. Cada producto lleva trazabilidad completa: sabes exactamente de qué finca, qué lote y qué fecha salió.</p>
+            <p><strong style="color:#D4AF37">Nuestra filosofía:</strong> Del origen a tu éxito. Cada producto lleva trazabilidad completa: sabes exactamente de qué finca, qué lote y qué fecha salió.</p>
             
-            <a href="https://www.instagram.com/reel/DFCmrJEq8Na/" target="_blank" rel="noopener" class="btn-antonio">CONOCE A ANTONIO BARRANTES</a>
+            <div style="text-align:center">
+                <a href="https://www.instagram.com/reel/DFCmrJEq8Na/" target="_blank" rel="noopener" class="btn-antonio">CONOCE A ANTONIO BARRANTES</a>
+            </div>
         </div>
     </section>
 
     <section id="catalogo">
         <h2 class="section-title">CATÁLOGO COMPLETO</h2>
-        
         <div class="catalogo-item" id="palmito">
-            <div class="catalogo-header" data-toggle="palmito">LÍNEA PALMITO <span>▼</span></div>
+            <div class="catalogo-header" data-cat="palmito">LÍNEA PALMITO <span>▼</span></div>
             <div class="catalogo-content" id="palmito-content">
                 <p>Corazón de palmito ecuatoriano gourmet - Santo Domingo</p>
-                <img src="./palmito.png" alt="Palmito" style="width:100%;max-width:400px;margin:20px auto;display:block" loading="lazy">
+                <img src="./palmito.png" alt="Palmito" style="width:100%;max-width:400px;margin:20px auto;display:block">
                 <div class="productos-grid">
                     <div class="producto-card">
                         <h4>Palmito Entero Premium</h4>
@@ -179,12 +172,11 @@
                 </div>
             </div>
         </div>
-
         <div class="catalogo-item" id="pina">
-            <div class="catalogo-header" data-toggle="pina">LÍNEA PIÑA <span>▼</span></div>
+            <div class="catalogo-header" data-cat="pina">LÍNEA PIÑA <span>▼</span></div>
             <div class="catalogo-content" id="pina-content">
                 <p>Piña Golden ecuatoriana de exportación - Dulzura 16° Brix</p>
-                <img src="./pina-productos.png" alt="Piña" style="width:100%;max-width:500px;margin:20px auto;display:block" loading="lazy">
+                <img src="./pina-productos.png" alt="Piña" style="width:100%;max-width:500px;margin:20px auto;display:block">
                 <div class="productos-grid">
                     <div class="producto-card">
                         <h4>Zumo de Piña 100% Natural</h4>
@@ -207,9 +199,8 @@
                 </div>
             </div>
         </div>
-
         <div class="catalogo-item" id="cafe">
-            <div class="catalogo-header" data-toggle="cafe">LÍNEA CAFÉ <span>▼</span></div>
+            <div class="catalogo-header" data-cat="cafe">LÍNEA CAFÉ <span>▼</span></div>
             <div class="catalogo-content" id="cafe-content">
                 <p>Café de especialidad costarricense - Microlotes exclusivos Finca El Puchol</p>
                 <div class="tabs">
@@ -235,7 +226,19 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 90-92</div>
                             </div>
-                            <button class="add-cart" data-name="Café Geisha 250g" data-price="45">AÑADIR AL CARRITO - $45</button>
+                            <button class="add-cart" data-name="Café Geisha 250g" data-price="45">AGREGAR AL CARRITO - $45.00</button>
+                            <div class="caracteristicas">
+                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
+                                <ul>
+                                    <li>Floral intenso: jazmín, azahar, bergamota</li>
+                                    <li>Cítricos: mandarina, limón Meyer</li>
+                                    <li>Dulzor: miel silvestre, caña de azúcar</li>
+                                    <li>Cuerpo sedoso, etéreo</li>
+                                    <li>Acidez málica brillante y elegante</li>
+                                    <li>Postgusto prolongado 5+ minutos</li>
+                                    <li>Solo 40kg disponibles al año</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,7 +256,19 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-88</div>
                             </div>
-                            <button class="add-cart" data-name="Café Villa Sarchi 250g" data-price="28">AÑADIR AL CARRITO - $28</button>
+                            <button class="add-cart" data-name="Café Villa Sarchi 250g" data-price="18">AGREGAR AL CARRITO - $18.00</button>
+                            <div class="caracteristicas">
+                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
+                                <ul>
+                                    <li>100% variedad costarricense endémica</li>
+                                    <li>Cítricos: naranja valencia, limón</li>
+                                    <li>Dulzor: miel de abeja, caramelo</li>
+                                    <li>Cuerpo medio-cremoso excepcional</li>
+                                    <li>Acidez brillante bien balanceada</li>
+                                    <li>Ideal para espresso y prensa francesa</li>
+                                    <li>Crema dorada espesa en espresso</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -271,7 +286,19 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
                             </div>
-                            <button class="add-cart" data-name="Café Kenia SL28 250g" data-price="32">AÑADIR AL CARRITO - $32</button>
+                            <button class="add-cart" data-name="Café Kenia SL28 250g" data-price="22">AGREGAR AL CARRITO - $22.00</button>
+                            <div class="caracteristicas">
+                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
+                                <ul>
+                                    <li>Genética legendaria de Kenia SL28</li>
+                                    <li>Frutos rojos: grosella negra, arándano</li>
+                                    <li>Umami: tomate seco, aceituna</li>
+                                    <li>Acidez vínica jugosa y brillante</li>
+                                    <li>Cuerpo medio sedoso</li>
+                                    <li>Perfil único e inconfundible</li>
+                                    <li>Ideal para filtrados que resalten acidez</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -289,7 +316,19 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-oscuro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 84-86</div>
                             </div>
-                            <button class="add-cart" data-name="Café Centroamericano 250g" data-price="24">AÑADIR AL CARRITO - $24</button>
+                            <button class="add-cart" data-name="Café Centroamericano 250g" data-price="15">AGREGAR AL CARRITO - $15.00</button>
+                            <div class="caracteristicas">
+                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
+                                <ul>
+                                    <li>Híbrido F1 resistente a roya</li>
+                                    <li>Chocolate negro 70% y caramelo tostado</li>
+                                    <li>Nuez pecana y avellana</li>
+                                    <li>Cuerpo completo y cremoso</li>
+                                    <li>Acidez baja y dulce</li>
+                                    <li>Perfecto para espresso y bebidas con leche</li>
+                                    <li>Sostenible y resistente al cambio climático</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -307,7 +346,19 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 88-90</div>
                             </div>
-                            <button class="add-cart" data-name="Café Typica Lima 250g" data-price="35">AÑADIR AL CARRITO - $35</button>
+                            <button class="add-cart" data-name="Café Typica Lima 250g" data-price="20">AGREGAR AL CARRITO - $20.00</button>
+                            <div class="caracteristicas">
+                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
+                                <ul>
+                                    <li>Typica puro de altura extrema</li>
+                                    <li>Frutos rojos: cereza, frambuesa, granada</li>
+                                    <li>Dulzor: panela, azúcar morena</li>
+                                    <li>Especias dulces: canela, clavo</li>
+                                    <li>Acidez málica tipo manzana verde</li>
+                                    <li>Cuerpo medio-sedoso elegante</li>
+                                    <li>Evoluciona en taza: frutal → dulce → especiado</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -318,29 +369,4 @@
                             <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA LOURDES</h3>
                             <p style="margin-bottom:20px">Lourdes de Naranjo</p>
                             <p class="cafe-descripcion">Microlote exclusivo de Typica cultivado en Lourdes de Naranjo a 1.650 msnm. Esta finca tiene microclima único con neblina matutina que protege los cafetos del sol directo. Proceso Honey amarillo de 15 días: el mucílago se adhiere al grano durante el secado, aportando dulzor y cuerpo sin la intensidad del Honey rojo.</p>
-                            <p class="cafe-descripcion">Perfil delicado y floral: té verde jazmín, flores de azahar y durazno maduro. Acidez cítrica suave tipo toronja rosada. Cuerpo sedoso que se desliza en boca. Café de tarde, para disfrutar despacio. Dulzura natural del honey como miel de flores silvestres. Postgusto limpio y refrescante.</p>
-                            <div class="ficha-datos">
-                                <div class="dato-box"><strong>ALTITUD</strong>1.650 msnm</div>
-                                <div class="dato-box"><strong>PROCESO</strong>Honey amarillo 15d</div>
-                                <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
-                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
-                            </div>
-                            <button class="add-cart" data-name="Café Typica Lourdes 250g" data-price="30">AÑADIR AL CARRITO - $30</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="roque" class="tab-content">
-                    <div class="cafe-ficha">
-                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Typica San Roque">
-                        <div>
-                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA SAN ROQUE</h3>
-                            <p style="margin-bottom:20px">Finca San Roque, Poás</p>
-                            <p class="cafe-descripcion">Typica cultivado en las faldas del Volcán Poás a 1.700 msnm. El suelo volcánico rico en minerales y la altura extrema producen granos densos con alta concentración de azúcares. Proceso Natural Anaeróbico de 30 días: los granos fermentan en tanques sellados sin oxígeno, desarrollando perfiles únicos de cacao y vainilla que no se logran con otros procesos.</p>
-                            <p class="cafe-descripcion">En taza es decadente: cacao en polvo 80%, avellana tostada y vainilla bourbon natural. La acidez es muy baja, casi imperceptible, lo que lo hace perfecto para quien no tolera cafés ácidos. Cuerpo completo y cremoso. Dulzor intenso natural. Es como tomar un postre líquido. Ideal para prensa francesa o cold brew donde su dulzor y cuerpo brillan sin que la acidez moleste.</p>
-                            <div class="ficha-datos">
-                                <div class="dato-box"><strong>ALTITUD</strong>1.700 msnm</div>
-                                <div class="dato-box"><strong>PROCESO</strong>Natural anaeróbico 30d</div>
-                                <div class="dato-box"><strong>TUESTE</strong>Medio</div>
-                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-87</div>
-                            </div>
-                            <button class="add-cart" data-name="Café Typica San Roque 250g" data-price="29">A
+                            <p class="cafe-descripcion">Perfil delicado y floral: té verde jazmín, flores de azahar y durazno maduro. Acidez cítrica suave tipo toronja rosada. Cuerpo sedoso que se desliza en boca.
