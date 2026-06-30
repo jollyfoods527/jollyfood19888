@@ -62,6 +62,8 @@
         .caracteristicas ul{list-style:none;padding:0}
         .caracteristicas li{margin:12px 0;padding-left:25px;position:relative;line-height:1.6}
         .caracteristicas li:before{content:"✓";position:absolute;left:0;color:#D4AF37;font-weight:bold;font-size:1.2rem}
+        .add-variedad-btn{background:#D4AF37;color:#000;border:none;padding:12px 30px;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:20px;width:100%;font-size:1rem}
+        .add-variedad-btn:hover{background:#fff}
         #mayoristas video{width:100%;border-radius:12px;border:3px solid #D4AF37;margin-top:30px;background:#222;min-height:300px}
         .cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;align-items:center;justify-content:center}
         .cart-modal.active{display:flex}
@@ -124,7 +126,7 @@
             <h3>Los Orígenes: 1998</h3>
             <p>Jolly Foods nace en Naranjo, Alajuela, en el corazón cafetalero de Costa Rica. La familia Barrantes, con tres generaciones de caficultores, decide llevar su café más allá de la cooperativa local. Empezamos con solo 2 hectáreas de Typica en Finca El Puchol, a 1.500 msnm.</p>
             
-            <h3>La Expansión: 2010</p>
+            <h3>La Expansión: 2010</h3>
             <p>Antonio Barrantes, agrónomo especializado en café de especialidad, introduce variedades exóticas: Geisha de Panamá, SL28 de Kenia y Villa Sarchi endémica. Paralelamente, establecemos alianzas con productores de palmito en Santo Domingo, Ecuador, y piña Golden en la zona Atlántica. Nace la visión de tres líneas premium bajo una sola marca.</p>
 
             <h3>Hoy: 2026</h3>
@@ -143,25 +145,27 @@
             <div class="catalogo-header">LÍNEA PALMITO <span>▼</span></div>
             <div class="catalogo-content">
                 <p>Corazón de palmito ecuatoriano gourmet - Santo Domingo</p>
-                <img src="palmito.png" alt="Palmito" style="width:100%;max-width:400px;margin:20px auto;display:block" loading="lazy">
                 <div class="productos-grid">
                     <div class="producto-card">
+                        <img src="palmito.png" alt="Palmito Entero">
                         <h4>Palmito Entero Premium</h4>
                         <p>Corazones seleccionados a mano, textura tierna, sabor suave. Origen: Santo Domingo, Ecuador. Peso neto: 400g. Sin preservantes. Empacado en agua de manantial.</p>
                         <div class="precio">$4.50</div>
-                        <button class="add-cart" onclick="addCart('Palmito Entero Premium',4.5)">AGREGAR AL CARRITO</button>
+                        <button class="add-cart" onclick="addToCart('Palmito Entero Premium',4.5)">AGREGAR AL CARRITO</button>
                     </div>
                     <div class="producto-card">
+                        <img src="palmito.png" alt="Crema de Palmito">
                         <h4>Crema de Palmito Gourmet</h4>
                         <p>Textura untuosa, ideal para dips y salsas gourmet. 250g. Sin gluten. Perfecta para canapés.</p>
                         <div class="precio">$5.20</div>
-                        <button class="add-cart" onclick="addCart('Crema de Palmito',5.2)">AGREGAR AL CARRITO</button>
+                        <button class="add-cart" onclick="addToCart('Crema de Palmito',5.2)">AGREGAR AL CARRITO</button>
                     </div>
                     <div class="producto-card">
+                        <img src="palmito.png" alt="Palmito Trozos">
                         <h4>Palmito en Trozos</h4>
                         <p>Trozos medianos para salteados. Rendimiento 3-4 porciones. 350g. Listo para usar.</p>
                         <div class="precio">$3.80</div>
-                        <button class="add-cart" onclick="addCart('Palmito en Trozos',3.8)">AGREGAR AL CARRITO</button>
+                        <button class="add-cart" onclick="addToCart('Palmito en Trozos',3.8)">AGREGAR AL CARRITO</button>
                     </div>
                 </div>
             </div>
@@ -220,18 +224,7 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 90-92</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Floral intenso: jazmín, azahar, bergamota</li>
-                                    <li>Cítricos: mandarina, limón Meyer</li>
-                                    <li>Dulzor: miel silvestre, caña de azúcar</li>
-                                    <li>Cuerpo sedoso, etéreo</li>
-                                    <li>Acidez málica brillante y elegante</li>
-                                    <li>Postgusto prolongado 5+ minutos</li>
-                                    <li>Solo 40kg disponibles al año</li>
-                                </ul>
-                            </div>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Geisha 250g',45.00)">AÑADIR 250g - $45.00</button>
                         </div>
                     </div>
                 </div>
@@ -242,25 +235,14 @@
                             <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">VILLA SARCHI</h3>
                             <p style="margin-bottom:20px">Valle Occidental, Costa Rica</p>
                             <p class="cafe-descripcion">Variedad 100% costarricense, descubierta como mutación natural de Bourbon en Villa Sarchí. Es una de las pocas variedades endémicas del país. Porte bajo que facilita cosecha manual selectiva. Cultivada a 1450msnm en suelos volcánicos ricos en materia orgánica.</p>
-                            <p class="cafe-descripcion">Perfil cítrico brillante con naranja valencia y miel de abeja de altura. Acidez viva balanceada. Cuerpo medio-cremoso excepcional. Produce crema dorada espesa en espresso con dulzor natural sin azúcar. Brilla en prensa francesa e inmersión.</p>
+                            <p class="cafe-descripcion">Perfil cítrico brillante con naranja valencia y miel de abeja de altura. Caramelo rubio y chocolate con leche en el retrogusto. Cuerpo medio-cremoso excepcional. Produce crema dorada espesa en espresso con dulzor natural sin azúcar. Brilla en prensa francesa e inmersión.</p>
                             <div class="ficha-datos">
                                 <div class="dato-box"><strong>ALTITUD</strong>1.450 msnm</div>
                                 <div class="dato-box"><strong>PROCESO</strong>Lavado 18h + secado 12d</div>
                                 <div class="dato-box"><strong>TUESTE</strong>Medio</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-88</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>100% variedad costarricense endémica</li>
-                                    <li>Cítricos: naranja valencia, limón</li>
-                                    <li>Dulzor: miel de abeja, caramelo</li>
-                                    <li>Cuerpo medio-cremoso excepcional</li>
-                                    <li>Acidez brillante bien balanceada</li>
-                                    <li>Ideal para espresso y prensa francesa</li>
-                                    <li>Crema dorada espesa en espresso</li>
-                                </ul>
-                            </div>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Villa Sarchi 250g',18.00)">AÑADIR 250g - $18.00</button>
                         </div>
                     </div>
                 </div>
@@ -278,18 +260,7 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Genética legendaria de Kenia SL28</li>
-                                    <li>Frutos rojos: grosella negra, arándano</li>
-                                    <li>Umami: tomate seco, aceituna</li>
-                                    <li>Acidez vínica jugosa y brillante</li>
-                                    <li>Cuerpo medio sedoso</li>
-                                    <li>Perfil único e inconfundible</li>
-                                    <li>Ideal para filtrados que resalten acidez</li>
-                                </ul>
-                            </div>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Kenia SL28 250g',22.00)">AÑADIR 250g - $22.00</button>
                         </div>
                     </div>
                 </div>
@@ -307,18 +278,7 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-oscuro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 84-86</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Híbrido F1 resistente a roya</li>
-                                    <li>Chocolate negro 70% y caramelo tostado</li>
-                                    <li>Nuez pecana y avellana</li>
-                                    <li>Cuerpo completo y cremoso</li>
-                                    <li>Acidez baja y dulce</li>
-                                    <li>Perfecto para espresso y bebidas con leche</li>
-                                    <li>Sostenible y resistente al cambio climático</li>
-                                </ul>
-                            </div>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Centroamericano 250g',15.00)">AÑADIR 250g - $15.00</button>
                         </div>
                     </div>
                 </div>
@@ -336,18 +296,7 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 88-90</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Typica puro de altura extrema</li>
-                                    <li>Frutos rojos: cereza, frambuesa, granada</li>
-                                    <li>Dulzor: panela, azúcar morena</li>
-                                    <li>Especias dulces: canela, clavo</li>
-                                    <li>Acidez málica tipo manzana verde</li>
-                                    <li>Cuerpo medio-sedoso elegante</li>
-                                    <li>Evoluciona en taza: frutal → dulce → especiado</li>
-                                </ul>
-                            </div>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Typica Lima 250g',20.00)">AÑADIR 250g - $20.00</button>
                         </div>
                     </div>
                 </div>
@@ -365,12 +314,31 @@
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Perfil floral: té verde, jazmín, azahar</li>
-                                    <li>Fruta de hueso: durazno, albaricoque</li>
-                                    <li>Dulzor: miel de flores silvestres</li>
-                                    <li>Acidez cítrica suave tipo toronja</li>
-                                    <li>Cuerpo sedoso y elegante</li>
-                                    <li>Postgusto limpio y refrescante</li>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Typica Lourdes 250g',21.00)">AÑADIR 250g - $21.00</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="roque" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Typica San Roque">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA SAN ROQUE</h3>
+                            <p style="margin-bottom:20px">Finca San Roque, Poás</p>
+                            <p class="cafe-descripcion">Typica cultivado en las faldas del Volcán Poás a 1.700 msnm. El suelo volcánico rico en minerales y la altura extrema producen granos densos con alta concentración de azúcares. Proceso Natural Anaeróbico de 30 días: los granos fermentan en tanques sellados sin oxígeno, desarrollando perfiles únicos de cacao y vainilla que no se logran con otros procesos.</p>
+                            <p class="cafe-descripcion">En taza es decadente: cacao en polvo 80%, avellana tostada y vainilla bourbon natural. La acidez es muy baja, casi imperceptible, lo que lo hace perfecto para quien no tolera cafés ácidos. Cuerpo completo y cremoso. Dulzor intenso natural. Es como tomar un postre líquido. Ideal para prensa francesa o cold brew donde su dulzor y cuerpo brillan sin que la acidez moleste.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.700 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Natural anaeróbico 30d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-87</div>
+                            </div>
+                            <button class="add-variedad-btn" onclick="addToCart('Café Typica San Roque 250g',19.00)">AÑADIR 250g - $19.00</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="mayoristas">
+        <h2 class="section-title">MAYORISTAS</h2>
+        <p style="text-align:center;max-width:800px;margin:0 auto 30px;line-height:1.8">Exportamos café
