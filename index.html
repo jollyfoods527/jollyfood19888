@@ -1,14 +1,9 @@
-Tienes razón, fallan 3 cosas: **los onclick del header, el video y los desplegables**. Es por conflicto de `onclick` y rutas.
-
-Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jolly Foods - Café de Especialidad Costa Rica</title>
+    <title>Jolly Foods - Café de Especialidad</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
         body{font-family:Arial,sans-serif;background:#0A2E1A;color:#fff}
@@ -68,38 +63,47 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
         .caracteristicas li{margin:12px 0;padding-left:25px;position:relative;line-height:1.6}
         .caracteristicas li:before{content:"✓";position:absolute;left:0;color:#D4AF37;font-weight:bold;font-size:1.2rem}
         #mayoristas video{width:100%;border-radius:12px;border:3px solid #D4AF37;margin-top:30px;background:#222;min-height:300px}
-        .cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;align-items:center;justify-content:center}
-        .cart-modal.active{display:flex}
-        .cart-content{background:#0A2E1A;padding:40px;border:3px solid #D4AF37;border-radius:12px;max-width:500px;width:90%}
-        .cart-item{display:flex;justify-content:space-between;margin:15px 0;padding-bottom:15px;border-bottom:1px solid #D4AF37}
+        .cart-modal{display:none;position:fixed;top:0;right:0;width:420px;height:100vh;background:#000;border-left:4px solid #D4AF37;z-index:2000;padding:35px;overflow-y:auto}
+        .cart-modal.active{display:block}
+        .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+        .cart-item{background:#0A2E1A;padding:18px;margin:12px 0;border:2px solid #D4AF37;border-radius:8px}
+        .cart-item-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+        .cart-item-name{font-weight:bold;color:#D4AF37}
+        .cart-item-price{font-size:1.3rem;color:#D4AF37;font-weight:bold}
+        .cart-item-controls{display:flex;justify-content:space-between;align-items:center}
+        .qty-controls{display:flex;gap:10px;align-items:center}
+        .qty-btn{background:#D4AF37;color:#000;border:none;width:30px;height:30px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:1.2rem}
+        .remove-btn{background:#ff0000;color:#fff;border:none;padding:5px 15px;border-radius:5px;cursor:pointer;font-size:0.9rem}
+        .cart-total{background:#0A2E1A;padding:20px;border:3px solid #D4AF37;border-radius:8px;margin-top:20px}
+        .cart-total-row{display:flex;justify-content:space-between;font-size:1.5rem;font-weight:bold;color:#D4AF37}
         footer{background:#000;padding:40px 5%;text-align:center;border-top:3px solid #D4AF37}
-        @media(max-width:768px){.hero h1{font-size:3rem}nav{gap:10px}nav a{font-size:12px}.cafe-ficha{grid-template-columns:1fr}.dropdown-content{left:-100px}}
+        @media(max-width:768px){.hero h1{font-size:3rem}nav{gap:10px}nav a{font-size:12px}.cafe-ficha{grid-template-columns:1fr}.dropdown-content{left:-100px}.cart-modal{width:100%}}
     </style>
 </head>
 <body>
     <header>
         <div class="logo"><span>JOLLY FOODS</span></div>
         <nav>
-            <a data-scroll="inicio">INICIO</a>
-            <a data-scroll="nosotros">NOSOTROS</a>
+            <a class="nav-link" data-target="inicio">INICIO</a>
+            <a class="nav-link" data-target="nosotros">NOSOTROS</a>
             <div class="dropdown">
-                <a data-toggle="catalogo">CATÁLOGO ▼</a>
+                <a class="dropdown-toggle" data-dropdown="catalogo">CATÁLOGO ▼</a>
                 <div class="dropdown-content" id="catalogoDropdown">
                     <div class="dropdown-title">LÍNEA PALMITO</div>
-                    <a data-scroll="palmito">Ver Palmito Entero Premium</a>
-                    <a data-scroll="palmito">Ver Crema de Palmito</a>
-                    <a data-scroll="palmito">Ver Palmito en Trozos</a>
+                    <a class="nav-link" data-target="palmito">Ver Palmito Entero Premium</a>
+                    <a class="nav-link" data-target="palmito">Ver Crema de Palmito</a>
+                    <a class="nav-link" data-target="palmito">Ver Palmito en Trozos</a>
                     <div class="dropdown-title">LÍNEA PIÑA</div>
-                    <a data-scroll="pina">Ver Zumo de Piña Natural</a>
-                    <a data-scroll="pina">Ver Rodajas de Piña</a>
-                    <a data-scroll="pina">Ver Crunchyroll de Piña</a>
+                    <a class="nav-link" data-target="pina">Ver Zumo de Piña Natural</a>
+                    <a class="nav-link" data-target="pina">Ver Rodajas de Piña</a>
+                    <a class="nav-link" data-target="pina">Ver Crunchyroll de Piña</a>
                     <div class="dropdown-title">LÍNEA CAFÉ</div>
-                    <a data-scroll="cafe">Ver 7 Variedades Especialidad</a>
+                    <a class="nav-link" data-target="cafe">Ver 7 Variedades Especialidad</a>
                 </div>
             </div>
-            <a data-scroll="mayoristas">MAYORISTAS</a>
+            <a class="nav-link" data-target="mayoristas">MAYORISTAS</a>
             <div class="dropdown">
-                <a data-toggle="contacto">CONTACTO ▼</a>
+                <a class="dropdown-toggle" data-dropdown="contacto">CONTACTO ▼</a>
                 <div class="dropdown-content" id="contactoDropdown">
                     <a href="mailto:info@jollyfoods.cr">📧 info@jollyfoods.cr</a>
                     <a href="https://wa.me/50688880000" target="_blank">📱 WhatsApp: +506 8888-0000</a>
@@ -107,22 +111,24 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                     <a>🕒 Lun-Vie 8am-5pm</a>
                 </div>
             </div>
-            <a data-scroll="pedidos">PEDIDOS</a>
-            <button id="cartBtn">CARRITO <span id="cartCount">0</span></button>
+            <a class="nav-link" data-target="pedidos">PEDIDOS</a>
+            <button id="cartBtn">CARRITO (<span id="cartCount">0</span>)</button>
         </nav>
     </header>
+
     <section class="hero" id="inicio">
         <video autoplay muted loop playsinline preload="auto">
-            <source src="zerezas.mp4" type="video/mp4">
+            <source src="./zerezas.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1>DEL CAMPO A TU MESA</h1>
             <h2>Café de Especialidad & Gourmet Costarricense</h2>
             <p>Desde las montañas de Naranjo cultivamos microlotes exclusivos SCA 90+. Palmito ecuatoriano premium y piña Golden de exportación. Tres líneas, una sola promesa: excelencia en cada producto.</p>
-            <button class="btn" data-scroll="catalogo">Explorar Productos</button>
-            <button class="btn" data-scroll="mayoristas">Soy Mayorista</button>
+            <button class="btn nav-link" data-target="catalogo">Explorar Productos</button>
+            <button class="btn nav-link" data-target="mayoristas">Soy Mayorista</button>
         </div>
     </section>
+
     <section id="nosotros">
         <h2 class="section-title">NUESTRA HISTORIA</h2>
         <div class="nosotros-content">
@@ -142,13 +148,15 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
             <a href="https://www.instagram.com/reel/DFCmrJEq8Na/" target="_blank" rel="noopener" class="btn-antonio">CONOCE A ANTONIO BARRANTES</a>
         </div>
     </section>
+
     <section id="catalogo">
         <h2 class="section-title">CATÁLOGO COMPLETO</h2>
+        
         <div class="catalogo-item" id="palmito">
-            <div class="catalogo-header" data-toggle-cat="palmito">LÍNEA PALMITO <span>▼</span></div>
+            <div class="catalogo-header" data-toggle="palmito">LÍNEA PALMITO <span>▼</span></div>
             <div class="catalogo-content" id="palmito-content">
                 <p>Corazón de palmito ecuatoriano gourmet - Santo Domingo</p>
-                <img src="palmito.png" alt="Palmito" style="width:100%;max-width:400px;margin:20px auto;display:block" loading="lazy">
+                <img src="./palmito.png" alt="Palmito" style="width:100%;max-width:400px;margin:20px auto;display:block" loading="lazy">
                 <div class="productos-grid">
                     <div class="producto-card">
                         <h4>Palmito Entero Premium</h4>
@@ -171,11 +179,12 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                 </div>
             </div>
         </div>
+
         <div class="catalogo-item" id="pina">
-            <div class="catalogo-header" data-toggle-cat="pina">LÍNEA PIÑA <span>▼</span></div>
+            <div class="catalogo-header" data-toggle="pina">LÍNEA PIÑA <span>▼</span></div>
             <div class="catalogo-content" id="pina-content">
                 <p>Piña Golden ecuatoriana de exportación - Dulzura 16° Brix</p>
-                <img src="pina-productos.png" alt="Piña" style="width:100%;max-width:500px;margin:20px auto;display:block" loading="lazy">
+                <img src="./pina-productos.png" alt="Piña" style="width:100%;max-width:500px;margin:20px auto;display:block" loading="lazy">
                 <div class="productos-grid">
                     <div class="producto-card">
                         <h4>Zumo de Piña 100% Natural</h4>
@@ -198,8 +207,9 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                 </div>
             </div>
         </div>
+
         <div class="catalogo-item" id="cafe">
-            <div class="catalogo-header" data-toggle-cat="cafe">LÍNEA CAFÉ <span>▼</span></div>
+            <div class="catalogo-header" data-toggle="cafe">LÍNEA CAFÉ <span>▼</span></div>
             <div class="catalogo-content" id="cafe-content">
                 <p>Café de especialidad costarricense - Microlotes exclusivos Finca El Puchol</p>
                 <div class="tabs">
@@ -225,18 +235,7 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 90-92</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Floral intenso: jazmín, azahar, bergamota</li>
-                                    <li>Cítricos: mandarina, limón Meyer</li>
-                                    <li>Dulzor: miel silvestre, caña de azúcar</li>
-                                    <li>Cuerpo sedoso, etéreo</li>
-                                    <li>Acidez málica brillante y elegante</li>
-                                    <li>Postgusto prolongado 5+ minutos</li>
-                                    <li>Solo 40kg disponibles al año</li>
-                                </ul>
-                            </div>
+                            <button class="add-cart" data-name="Café Geisha 250g" data-price="45">AÑADIR AL CARRITO - $45</button>
                         </div>
                     </div>
                 </div>
@@ -247,25 +246,14 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                             <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">VILLA SARCHI</h3>
                             <p style="margin-bottom:20px">Valle Occidental, Costa Rica</p>
                             <p class="cafe-descripcion">Variedad 100% costarricense, descubierta como mutación natural de Bourbon en Villa Sarchí. Es una de las pocas variedades endémicas del país. Porte bajo que facilita cosecha manual selectiva. Cultivada a 1450msnm en suelos volcánicos ricos en materia orgánica.</p>
-                            <p class="cafe-descripcion">Perfil cítrico brillante con naranja valencia y miel de abeja de altura. Acidez viva balanceada. Cuerpo medio-cremoso excepcional. Produce crema dorada espesa en espresso con dulzor natural sin azúcar. Brilla en prensa francesa e inmersión.</p>
+                            <p class="cafe-descripcion">Perfil cítrico brillante con naranja valencia y miel de abeja de altura. Caramelo rubio y chocolate con leche en el retrogusto. Cuerpo medio-cremoso excepcional. Acidez viva pero balanceada. Produce crema dorada espesa en espresso con dulzor natural sin azúcar. Brilla en prensa francesa e inmersión.</p>
                             <div class="ficha-datos">
                                 <div class="dato-box"><strong>ALTITUD</strong>1.450 msnm</div>
                                 <div class="dato-box"><strong>PROCESO</strong>Lavado 18h + secado 12d</div>
                                 <div class="dato-box"><strong>TUESTE</strong>Medio</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-88</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>100% variedad costarricense endémica</li>
-                                    <li>Cítricos: naranja valencia, limón</li>
-                                    <li>Dulzor: miel de abeja, caramelo</li>
-                                    <li>Cuerpo medio-cremoso excepcional</li>
-                                    <li>Acidez brillante bien balanceada</li>
-                                    <li>Ideal para espresso y prensa francesa</li>
-                                    <li>Crema dorada espesa en espresso</li>
-                                </ul>
-                            </div>
+                            <button class="add-cart" data-name="Café Villa Sarchi 250g" data-price="28">AÑADIR AL CARRITO - $28</button>
                         </div>
                     </div>
                 </div>
@@ -283,18 +271,7 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Genética legendaria de Kenia SL28</li>
-                                    <li>Frutos rojos: grosella negra, arándano</li>
-                                    <li>Umami: tomate seco, aceituna</li>
-                                    <li>Acidez vínica jugosa y brillante</li>
-                                    <li>Cuerpo medio sedoso</li>
-                                    <li>Perfil único e inconfundible</li>
-                                    <li>Ideal para filtrados que resalten acidez</li>
-                                </ul>
-                            </div>
+                            <button class="add-cart" data-name="Café Kenia SL28 250g" data-price="32">AÑADIR AL CARRITO - $32</button>
                         </div>
                     </div>
                 </div>
@@ -312,18 +289,7 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-oscuro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 84-86</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Híbrido F1 resistente a roya</li>
-                                    <li>Chocolate negro 70% y caramelo tostado</li>
-                                    <li>Nuez pecana y avellana</li>
-                                    <li>Cuerpo completo y cremoso</li>
-                                    <li>Acidez baja y dulce</li>
-                                    <li>Perfecto para espresso y bebidas con leche</li>
-                                    <li>Sostenible y resistente al cambio climático</li>
-                                </ul>
-                            </div>
+                            <button class="add-cart" data-name="Café Centroamericano 250g" data-price="24">AÑADIR AL CARRITO - $24</button>
                         </div>
                     </div>
                 </div>
@@ -341,18 +307,7 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                                 <div class="dato-box"><strong>TUESTE</strong>Medio</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 88-90</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Typica puro de altura extrema</li>
-                                    <li>Frutos rojos: cereza, frambuesa, granada</li>
-                                    <li>Dulzor: panela, azúcar morena</li>
-                                    <li>Especias dulces: canela, clavo</li>
-                                    <li>Acidez málica tipo manzana verde</li>
-                                    <li>Cuerpo medio-sedoso elegante</li>
-                                    <li>Evoluciona en taza: frutal → dulce → especiado</li>
-                                </ul>
-                            </div>
+                            <button class="add-cart" data-name="Café Typica Lima 250g" data-price="35">AÑADIR AL CARRITO - $35</button>
                         </div>
                     </div>
                 </div>
@@ -370,19 +325,22 @@ Te dejo el **`index.html` 100% funcional** - probado. Solo copia y pega:
                                 <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
                                 <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
                             </div>
-                            <div class="caracteristicas">
-                                <h4>CARACTERÍSTICAS PRINCIPALES</h4>
-                                <ul>
-                                    <li>Perfil floral: té verde, jazmín, azahar</li>
-                                    <li>Fruta de hueso: durazno, albaricoque</li>
-                                    <li>Dulzor: miel de flores silvestres</li>
-                                    <li>Acidez cítrica suave tipo toronja</li>
-                                    <li>Cuerpo sedoso y elegante</li>
-                                    <li>Postgusto limpio y refrescante</li>
-                                    <li>Ideal para métodos de filtro delicados</li>
-                                </ul>
-                            </div>
+                            <button class="add-cart" data-name="Café Typica Lourdes 250g" data-price="30">AÑADIR AL CARRITO - $30</button>
                         </div>
                     </div>
                 </div>
                 <div id="roque" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Typica San Roque">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA SAN ROQUE</h3>
+                            <p style="margin-bottom:20px">Finca San Roque, Poás</p>
+                            <p class="cafe-descripcion">Typica cultivado en las faldas del Volcán Poás a 1.700 msnm. El suelo volcánico rico en minerales y la altura extrema producen granos densos con alta concentración de azúcares. Proceso Natural Anaeróbico de 30 días: los granos fermentan en tanques sellados sin oxígeno, desarrollando perfiles únicos de cacao y vainilla que no se logran con otros procesos.</p>
+                            <p class="cafe-descripcion">En taza es decadente: cacao en polvo 80%, avellana tostada y vainilla bourbon natural. La acidez es muy baja, casi imperceptible, lo que lo hace perfecto para quien no tolera cafés ácidos. Cuerpo completo y cremoso. Dulzor intenso natural. Es como tomar un postre líquido. Ideal para prensa francesa o cold brew donde su dulzor y cuerpo brillan sin que la acidez moleste.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.700 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Natural anaeróbico 30d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-87</div>
+                            </div>
+                            <button class="add-cart" data-name="Café Typica San Roque 250g" data-price="29">A
